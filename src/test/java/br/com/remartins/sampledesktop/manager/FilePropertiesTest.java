@@ -50,5 +50,15 @@ public class FilePropertiesTest {
 			fail();
 		}
 	}
+	
+	@Test
+	public void deletePropertiesFileDiskError() {
+		FileProperties fileProperties = new FileProperties();
+		try {
+			fileProperties.deletePropertiesFileDiskError();
+		} catch (IOException e) {
+			fail(e.getMessage());
+		}
+	}
 
 }

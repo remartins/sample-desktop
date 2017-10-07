@@ -15,7 +15,7 @@ public class Main {
 
 		try {
 			PropertiesManager pm = PropertiesManager.instance();
-			System.out.println(pm.getProperty(Constants.KEY_PROPERTIES_SAMPLE));
+			LOGGER.info(pm.getProperty(Constants.KEY_PROPERTIES_SAMPLE));
 		} catch (IOException e) {
 			LOGGER.error(e);
 		}

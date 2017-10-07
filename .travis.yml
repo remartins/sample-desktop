@@ -13,5 +13,4 @@ jdk:
   - oraclejdk8
 
 script: 
-  - mvn package
-  - mvn cobertura:cobertura
+  - mvn clean package sonar:sonar

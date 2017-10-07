@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.nio.file.FileSystems;
+import java.nio.file.Files;
 import java.util.Properties;
 
 public class FileProperties {
@@ -26,16 +28,12 @@ public class FileProperties {
 		fo.close();
 	}
 
-	public boolean deletePropertiesFileDisk(String filepath) {
-		File file = new File(filepath);
-		if (file.exists()) {
-			return file.delete();
-		}
-		return Boolean.FALSE;
+	public boolean deletePropertiesFileDisk(String filepath) throws IOException {
+		return Files.deleteIfExists(FileSystems.getDefault().getPath(filepath));
 	}
 	
 	
-	public void deletePropertiesFileDiskError() {
+	public void deletePropertiesFileDiskError() throws IOException {
 		FileProperties fp = new FileProperties();
 		fp.deletePropertiesFileDisk("teste");
 	}

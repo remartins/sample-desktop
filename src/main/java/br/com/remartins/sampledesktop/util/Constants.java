@@ -1,6 +1,6 @@
 package br.com.remartins.sampledesktop.util;
 
-public class Constants {
+public final class Constants {
 
 	public static final String FILENAME_PROPERTIES = "sampledesktop.properties";
 	public static final String TITLE_PROPERTIES = "My Properties Sample";

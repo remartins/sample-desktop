@@ -6,8 +6,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Properties;
 
-import org.junit.Test;
-
 public class FileProperties {
 
 	public Properties loadPropertiesFromFile(File file) throws IOException {
@@ -36,7 +34,7 @@ public class FileProperties {
 		return Boolean.FALSE;
 	}
 	
-	@Test
+	
 	public void deletePropertiesFileDiskError() {
 		FileProperties fp = new FileProperties();
 		fp.deletePropertiesFileDisk("teste");

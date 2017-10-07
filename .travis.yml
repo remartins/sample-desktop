@@ -1,0 +1,16 @@
+language: java
+
+addons:
+  sonarcloud:
+    organization: "renatomartinsti-github" # the key of the org you chose at step #3
+    token:
+      secure: ${SONAR_TOKEN}
+script:
+  # other script steps might be done before running the actual analysis
+  - sonar-scanner
+
+jdk:
+  - oraclejdk8
+
+script: 
+  - mvn clean package sonar:sonar

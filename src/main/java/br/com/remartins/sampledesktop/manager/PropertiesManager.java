@@ -9,14 +9,27 @@ import br.com.remartins.sampledesktop.util.Utils;
 
 public class PropertiesManager {
 
-
 	private FileProperties fileProperties;
-	
+
 	private static PropertiesManager instance;
 	private File propFile;
 	private Properties prop;
 
 	private PropertiesManager() throws IOException {
+		init();
+	}
+
+	public static PropertiesManager instance() throws IOException {
+		if (instance == null) {
+			instance = new PropertiesManager();
+		}
+		return instance;
+	}
+	
+	
+	
+
+	private void init() throws IOException {
 		this.fileProperties = new FileProperties();
 		this.propFile = new File(getPropertiesPath());
 
@@ -28,14 +41,6 @@ public class PropertiesManager {
 		}
 	}
 
-
-	public static PropertiesManager instance() throws IOException {
-		if (instance == null) {
-			instance = new PropertiesManager();
-		}
-		return instance;
-	}
-
 	public String getProperty(String key) {
 		return prop.getProperty(key);
 	}
@@ -44,13 +49,11 @@ public class PropertiesManager {
 		this.prop = fileProperties.loadPropertiesFromFile(this.propFile);
 	}
 
-
 	private void createPropertiesDefault() throws IOException {
-		prop = new Properties();
+		prop = fileProperties.loadPropertiesFromFile(new File(PropertiesManager.class.getResource("/default.properties").getPath()));
 		prop.put(Constants.KEY_PROPERTIES_SAMPLE, Constants.VALUE_PROPERTIES_SAMPLE);
 		fileProperties.savePropertiesFileDisk(prop, propFile, Constants.TITLE_PROPERTIES);
 	}
-
 
 	private String getPropertiesPath() {
 		return Utils.getCurrentDirectory() + File.separator + Constants.FILENAME_PROPERTIES;
